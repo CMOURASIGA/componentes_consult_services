@@ -27,3 +27,6 @@
 .mock-nav span:first-of-type{background:#00aeef;color:#002952}
 .preview:has(.mock-nav){min-height:280px}
 @media(max-width:780px){.sidebar{width:300px;max-width:88vw}.sidebar-logo{height:155px}}
+
+/* Separação entre paleta corporativa e tokens funcionais */
+.brand-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0 32px}.brand-color{background:white;border:1px solid #dce6ef;border-radius:13px;padding:14px;overflow:hidden}.brand-swatch{height:135px;border-radius:8px}.brand-color-info{padding:14px 4px 4px;display:flex;flex-direction:column;gap:7px}.brand-color-info strong{font-size:15px}.brand-color-info code{font-weight:850;color:#003b73;font-size:14px}.brand-color-info small{font-size:11px;color:#718599}.token-subsection{border-top:1px solid #dce6ef;padding-top:29px;margin-top:27px}.token-subsection h3{font-size:20px;letter-spacing:-.03em;margin:9px 0}.token-subsection p{font-size:12px;color:#718599;line-height:1.7;margin:0 0 21px}.token-subsection .swatch{height:56px}@media(max-width:780px){.brand-grid{grid-template-columns:1fr}.brand-swatch{height:100px}}
