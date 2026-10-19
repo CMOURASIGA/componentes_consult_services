@@ -1,2 +1,20 @@
-# componentes_consult_services
-componentes_consult_services
+# 7Components · Consult Services
+
+Catálogo visual de componentes documentados a partir do [7Commander](https://github.com/CMOURASIGA/7Commander). Não modifica o sistema original.
+
+## Conteúdo
+
+- 9 componentes/padrões confirmados em arquivos de origem, com links e descrição.
+- 16 tokens de cores diretamente referenciados em `styles/tokens.css`.
+- Busca, filtros, fichas técnicas e prévias de interação.
+- Site responsivo, estático, sem autenticação, banco, segredo ou requisições a serviços externos.
+
+## Vercel
+
+Importe `CMOURASIGA/componentes_consult_services` como novo projeto. Framework Preset **Other**. Root Directory **/**. Build Command **vazio** (override desligado); Output Directory **./**. Não há variáveis de ambiente obrigatórias. O arquivo `vercel.json` estabelece o destino estático.
+
+## Escopo e limites
+
+Este é um **inventário manual inicial** (outubro de 2026), não um crawler ou uma biblioteca npm compartilhada. As prévias são reinterpretações independentes, não o código React importado do 7Commander. Não atribua uso em outros produtos sem auditoria específica de cada repositório.
+
+**Origem verificada:** `CMOURASIGA/7Commander`, `main`: `components/ui/workspace-primitives.tsx`, `components/ui/confirm-dialog.tsx`, `components/ui/toast.tsx`, `components/layout/sidebar.tsx`, `components/brand/brand-lockup.tsx`, `styles/tokens.css`.
