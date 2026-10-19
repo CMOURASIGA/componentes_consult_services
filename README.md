@@ -22,3 +22,7 @@ Este é um **inventário manual inicial** (outubro de 2026), não um crawler ou 
 ## Padrões funcionais
 
 - [RT-001: Whitelabel do cliente](padroes/RT-001-whitelabel.md), com análise do comportamento real, requisitos sugeridos, checklist de homologação e demonstração visual isolada no catálogo.
+
+## Rotinas transversais RT-002 a RT-010
+
+Inventário de login/autenticação, sessões e RBAC, notificações, auditoria, erros/confirmações, navegação mobile, configurações, identidade de produto e variáveis/segredos. Cada ficha separa evidência do 7Commander de norma proposta. Gestão específica dos produtos fica fora do catálogo.
