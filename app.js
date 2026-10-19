@@ -85,3 +85,16 @@ byId('interaction-grid').addEventListener('click',e=>{
 byId('ix-confirm').addEventListener('click',e=>{const b=e.target.closest('[data-confirm]');if(b){byId('ix-confirm').close();if(b.dataset.confirm==='accept')showToast('Exclusão apenas demonstrativa. Nenhum dado foi alterado.')}});
 byId('ix-form').addEventListener('submit',e=>{e.preventDefault();const valid=byId('ix-form-name').value.trim().length>0;byId('ix-form-error').hidden=valid;if(valid)showToast('Registro demonstrativo validado. Nenhum dado foi salvo.')});
 byId('ix-label-input').addEventListener('input',e=>{const invalid=!e.target.value.trim();byId('ix-label-error').hidden=!invalid;e.target.setAttribute('aria-invalid',String(invalid))});
+
+/* Demonstrações RT-002 a RT-010: estado local e sem acesso a recursos reais. */
+byId('routine-grid').addEventListener('click',event=>{
+ const action=event.target.closest('[data-rt-action]');if(!action)return;
+ const a=action.dataset.rtAction;
+ if(a==='login'){byId('rt-login-result').textContent='Fluxo ilustrativo: login → validação da sessão → acesso autorizado.';}
+ if(['success','error','info'].includes(a)){const el=byId('rt-feedback');const messages={success:'✓ Registro salvo com sucesso.',error:'Não foi possível salvar. Tente novamente.',info:'Atualização disponível para consulta.'};el.textContent=messages[a];el.dataset.tone=a;}
+ if(a==='confirm'){if(window.confirm('Simulação: deseja confirmar a exclusão?'))byId('rt-confirm-result').textContent='Confirmação recebida. Nenhum registro foi excluído.';else byId('rt-confirm-result').textContent='Operação cancelada. Nenhum registro foi excluído.';}
+ if(a==='nav'){byId('rt-navigation-panel').classList.toggle('rt-nav-closed');}
+});
+byId('rt-role').addEventListener('change',event=>{const admin=event.target.value==='admin';byId('rt-protected').disabled=!admin;byId('rt-permission').textContent=admin?'Ação disponível apenas nesta simulação visual.':'Somente leitura. Edição não autorizada.';});
+byId('rt-protected').addEventListener('click',()=>showToast('Demonstração de permissão. Nenhum dado foi alterado.'));
+byId('rt-setting').addEventListener('change',event=>{byId('rt-setting-preview').classList.toggle('compact',event.target.value==='Compacta');});
