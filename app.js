@@ -19,13 +19,56 @@ const categories=['Todos',...new Set(components.map(c=>c.category))];byId('filte
 byId('filters').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b){category=b.dataset.category;render()}});byId('search').addEventListener('input',render);
 byId('catalog').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.detail){const c=components.find(c=>c.id===b.dataset.detail);byId('dialog-title').textContent=c.name;byId('dialog-body').innerHTML='<p class="dialog-description">'+c.description+'</p><div class="dialog-info"><span>CATEGORIA</span>'+c.category+'</div><div class="dialog-info"><span>ARQUIVO DE ORIGEM</span><code>'+c.file+'</code></div><div class="dialog-info"><span>PROPRIEDADES / INTERFACE</span><code>'+c.usage+'</code></div><p class="dialog-description">Prévia ilustrativa. A implementação original está disponível no repositório de referência.</p><a class="dialog-link" href="'+base+c.file+'" target="_blank" rel="noopener noreferrer">Abrir implementação no GitHub ↗</a>';byId('details').showModal()}else if(b.dataset.demo==='toast'){showToast('✓ Operação demonstrativa concluída')}else if(b.dataset.demo==='confirm'){if(window.confirm('Exemplo de confirmação: deseja continuar?'))showToast('Ação confirmada (demonstração)')}});
 byId('close-dialog').addEventListener('click',()=>byId('details').close());byId('details').addEventListener('click',e=>{if(e.target===byId('details'))byId('details').close()});byId('brand-grid').innerHTML=brandColors.map(([label,value,key])=>'<div class="brand-color"><div class="brand-swatch" style="background:'+value+'"></div><div class="brand-color-info"><strong>'+label+'</strong><code>'+value+'</code><small>lib/brand-settings.ts · '+key+'</small></div></div>').join('');byId('token-grid').innerHTML=tokens.map(([name,value])=>'<div class="token"><div class="swatch" style="background:'+value+'"></div><b>'+name+'</b><small>'+value+'</small></div>').join('');byId('metric-components').textContent=components.length;byId('metric-categories').textContent=categories.length-1;byId('metric-tokens').textContent=tokens.length;byId('menu').addEventListener('click',()=>document.querySelector('.sidebar').classList.toggle('open'));document.querySelectorAll('.nav').forEach(link=>link.addEventListener('click',()=>{document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));link.classList.add('active');document.querySelector('.sidebar').classList.remove('open')}));render();
-// Simulador isolado de white label. Sem persistência ou integração com produto.
+// Simulador isolado de whitelabel: nenhuma persistência nem alteração do 7Commander.
 const whiteDefaults={primary:'#003b73',highlight:'#00aeef',name:'Cliente demonstração',logo:'https://i.imgur.com/gxXnYsA.png'};
-let whiteObjectURL=null;
-function syncWhite(){const primary=byId('white-primary').value,highlight=byId('white-highlight').value;byId('white-menu').style.backgroundColor=primary;byId('white-menu-active').style.backgroundColor=highlight;byId('white-client-name').textContent=byId('white-client').value.trim()||'Cliente demonstração';}
+let whiteObjectURL=null, whiteUploadSequence=0;
+function whiteTextColor(hex){const n=parseInt(hex.slice(1),16);const rgb=[(n>>16)&255,(n>>8)&255,n&255].map(v=>{v/=255;return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4)});return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722>.40?'#002952':'#ffffff'}
+function syncWhite(){
+ const primary=byId('white-primary').value,highlight=byId('white-highlight').value;
+ byId('white-menu').style.backgroundColor=primary;
+ byId('white-menu-active').style.backgroundColor=highlight;
+ byId('white-menu-active').style.color=whiteTextColor(highlight);
+ byId('white-client-name').textContent=byId('white-client').value.trim()||whiteDefaults.name;
+ byId('white-preview-button').style.backgroundColor=primary;
+ byId('white-preview-button').style.color=whiteTextColor(primary);
+ byId('white-content-top').style.color=primary;
+ byId('white-preview-pill').style.backgroundColor=highlight;
+ byId('white-preview-pill').style.color=whiteTextColor(highlight);
+}
+function suggestWhiteColors(image,sequence){
+ try{
+ const canvas=document.createElement('canvas');canvas.width=48;canvas.height=48;
+ const context=canvas.getContext('2d',{willReadFrequently:true});if(!context)throw Error('Canvas indisponível');
+ context.drawImage(image,0,0,48,48);
+ const data=context.getImageData(0,0,48,48).data;const counts=new Map();
+ for(let i=0;i<data.length;i+=4){if(data[i+3]<180)continue;const rgb=[data[i],data[i+1],data[i+2]];const channel=Math.max(...rgb)-Math.min(...rgb);if(channel<=70)continue;
+ const key=rgb.map(v=>Math.min(255,Math.round(v/32)*32)).join(',');counts.set(key,(counts.get(key)||0)+1)}
+ const colors=[...counts.entries()].sort((a,b)=>b[1]-a[1]).map(([key])=>'#'+key.split(',').map(v=>Number(v).toString(16).padStart(2,'0')).join(''));
+ if(sequence!==whiteUploadSequence)return;
+ if(colors[0])byId('white-primary').value=colors[0];
+ if(colors.find(c=>c!==colors[0]))byId('white-highlight').value=colors.find(c=>c!==colors[0]);
+ byId('white-color-status').textContent=colors.length?'Cores sugeridas com base na imagem. Revise e ajuste, se necessário.':'Não foram detectadas cores saturadas suficientes; ajuste manualmente.';
+ syncWhite();
+ }catch{if(sequence===whiteUploadSequence)byId('white-color-status').textContent='Não foi possível analisar a imagem. Escolha as cores manualmente.';}
+}
 ['white-primary','white-highlight','white-client'].forEach(id=>byId(id).addEventListener('input',syncWhite));
-byId('white-logo').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;if(!['image/png','image/jpeg','image/webp','image/svg+xml'].includes(f.type)||f.size>2*1024*1024){showToast('Use PNG, JPG, WebP ou SVG de até 2 MB.');e.target.value='';return;}if(whiteObjectURL)URL.revokeObjectURL(whiteObjectURL);whiteObjectURL=URL.createObjectURL(f);byId('white-logo-img').src=whiteObjectURL;});
-byId('white-reset').addEventListener('click',()=>{byId('white-primary').value=whiteDefaults.primary;byId('white-highlight').value=whiteDefaults.highlight;byId('white-client').value=whiteDefaults.name;byId('white-logo').value='';if(whiteObjectURL){URL.revokeObjectURL(whiteObjectURL);whiteObjectURL=null;}byId('white-logo-img').src=whiteDefaults.logo;syncWhite();});syncWhite();
+byId('white-logo').addEventListener('change',e=>{
+ const file=e.target.files?.[0];if(!file)return;
+ if(!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>2*1024*1024){showToast('Use PNG, JPG ou WebP de até 2 MB.');e.target.value='';return;}
+ const sequence=++whiteUploadSequence;if(whiteObjectURL)URL.revokeObjectURL(whiteObjectURL);
+ whiteObjectURL=URL.createObjectURL(file);
+ const image=new Image();
+ image.onload=()=>{if(sequence!==whiteUploadSequence)return;byId('white-logo-img').src=whiteObjectURL;suggestWhiteColors(image,sequence)};
+ image.onerror=()=>{if(sequence!==whiteUploadSequence)return;byId('white-color-status').textContent='Não foi possível ler a imagem.';showToast('Imagem inválida ou incompatível.')};
+ image.src=whiteObjectURL;
+});
+byId('white-reset').addEventListener('click',()=>{
+ ++whiteUploadSequence;byId('white-primary').value=whiteDefaults.primary;byId('white-highlight').value=whiteDefaults.highlight;byId('white-client').value=whiteDefaults.name;byId('white-logo').value='';
+ if(whiteObjectURL){URL.revokeObjectURL(whiteObjectURL);whiteObjectURL=null}
+ byId('white-logo-img').src=whiteDefaults.logo;byId('white-color-status').textContent='Identidade Consult Services restaurada nesta demonstração.';syncWhite();
+});
+byId('white-preview-button').addEventListener('click',()=>showToast('Botão demonstrativo. Nenhuma ação foi executada.'));
+syncWhite();
 
 const routineRegistry=[["RT-002","Login e autenticação","Supabase Auth com login Google, fluxo OAuth e redirecionamento após autenticação.","components/auth/kairos-auth-provider.tsx","Implementado no 7Commander","Autenticação obrigatória em produção, proteção no servidor, sessão segura, redirecionamento validado e logout efetivo."],["RT-003","Sessões e permissões (RBAC)","Contexto de usuário, autenticação de API e verificação de acesso.","lib/api-auth.ts","Parcial: autenticação observada; RBAC corporativo não comprovado","RBAC e isolamento tenant no backend com política de menor privilégio; negar acesso por padrão; nenhum papel concedido apenas pelo frontend."],["RT-004","Notificações e mensagens","ToastProvider com tons success, error e info; descarte após tempo definido.","components/ui/toast.tsx","Implementado no 7Commander","Mensagens claras e não técnicas; diferenciação de sucesso, erro e informação; acessibilidade e comportamento previsível."],["RT-005","Auditoria e rastreabilidade","Há migrações e serviços de auditoria de integrações no repositório.","database/migrations/029_integrations_audit.sql","Parcial: evidência de auditoria de integrações; cobertura global não comprovada","Registrar ações críticas com quem, quando, objeto, evento e resultado sem expor segredos; definir retenção e consulta administrativa."],["RT-006","Tratamento de erros e confirmações","Confirmação com ConfirmProvider/useConfirm, cancelamento, Escape e variantes de perigo.","components/ui/confirm-dialog.tsx","Implementado para confirmação; padrão global de erros não comprovado","Confirmar operações destrutivas, apresentar erros compreensíveis, evitar duplicação de envio, oferecer recuperação e registrar falhas técnicas."],["RT-007","Responsividade e navegação mobile","Sidebar responsiva, drawer mobile, fechamento na troca de rota e header contextual.","components/layout/app-shell.tsx","Implementado no 7Commander","Navegação funcional com teclado, mobile e desktop, sem sobreposição ou perda de contexto; menu fecha após navegação."],["RT-008","Configurações e preferências","Tela de configurações operacionais e validação de variáveis públicas e do servidor.","app/settings/page.tsx","Implementado parcialmente; preferências gerais compartilhadas não comprovadas","Separar preferências por usuário, configurações por tenant e segredos de ambiente; restringir alteração e manter fallback."],["RT-009","Identidade de produto e layout-base","Header, BrandLockup, Sidebar e AppShell organizam identidade, navegação e conteúdo.","components/layout/header.tsx","Implementado no 7Commander","Estrutura consistente sem impor módulos de negócio; cabeçalho, menu, marca e área de trabalho configuráveis por produto."],["RT-010","Validação de ambientes e segredos","Validação de variáveis de frontend/backend e estado de serviços na tela de configurações.","lib/env.ts","Evidência de validação no 7Commander","Segredos só no servidor; validação antes do deploy; erro seguro quando faltar configuração; nenhuma chave exposta na interface."]];document.getElementById('routine-grid').addEventListener('click',e=>{const btn=e.target.closest('[data-routine]');if(!btn)return;const r=routineRegistry.find(v=>v[0]===btn.dataset.routine);byId('dialog-title').textContent=r[0]+' · '+r[1];byId('dialog-body').innerHTML='<p class="dialog-description">'+r[2]+'</p><div class="dialog-info"><span>ESTADO DA IMPLEMENTAÇÃO DE REFERÊNCIA</span>'+r[4]+'</div><div class="dialog-info"><span>PADRÃO TRANSVERSAL PROPOSTO, PENDENTE DE HOMOLOGAÇÃO</span>'+r[5]+'</div><div class="dialog-info"><span>ORIGEM VERIFICADA</span><code>'+r[3]+'</code></div><a class="dialog-link" target="_blank" rel="noopener noreferrer" href="https://github.com/CMOURASIGA/7Commander/blob/main/'+r[3]+'">Consultar código de referência ↗</a><p><a class="dialog-link" target="_blank" rel="noopener noreferrer" href="./padroes/'+r[0]+'.md">Abrir documentação completa ↗</a></p>';byId('details').showModal()});
 
