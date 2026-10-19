@@ -18,3 +18,7 @@ Importe `CMOURASIGA/componentes_consult_services` como novo projeto. Framework P
 Este é um **inventário manual inicial** (outubro de 2026), não um crawler ou uma biblioteca npm compartilhada. As prévias são reinterpretações independentes, não o código React importado do 7Commander. Não atribua uso em outros produtos sem auditoria específica de cada repositório.
 
 **Origem verificada:** `CMOURASIGA/7Commander`, `main`: `components/ui/workspace-primitives.tsx`, `components/ui/confirm-dialog.tsx`, `components/ui/toast.tsx`, `components/layout/sidebar.tsx`, `components/brand/brand-lockup.tsx`, `styles/tokens.css`.
+
+## Padrões funcionais
+
+- [RT-001: Whitelabel do cliente](padroes/RT-001-whitelabel.md), com análise do comportamento real, requisitos sugeridos, checklist de homologação e demonstração visual isolada no catálogo.
