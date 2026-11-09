@@ -32,3 +32,7 @@ Inventário de login/autenticação, sessões e RBAC, notificações, auditoria,
 ## Regras de interação RT-011 a RT-016
 
 Labels/mensagens, drawer, modal, feedback toast, formulários/validação e estados da interface. Em cada caso, a evidência no 7Commander é separada da proposta corporativa, ainda pendente de homologação.
+
+## Padrões implementados com evidência em outros produtos
+
+- [RT-017: Abas de navegação contextual (Tabs)](padroes/RT-017-tabs-navegacao-contextual.md): organização da tela Ambientes do 7Service em quatro abas, navegação por teclado e padronização dos botões. Uso registrado na branch `develop` do 7Service; homologação pendente, ainda não é adoção corporativa confirmada.
