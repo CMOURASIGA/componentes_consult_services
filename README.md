@@ -36,3 +36,7 @@ Labels/mensagens, drawer, modal, feedback toast, formulários/validação e esta
 ## Padrões implementados com evidência em outros produtos
 
 - [RT-017: Abas de navegação contextual (Tabs)](padroes/RT-017-tabs-navegacao-contextual.md): organização da tela Ambientes do 7Service em quatro abas, navegação por teclado e padronização dos botões. Uso registrado na branch `develop` do 7Service; homologação pendente, ainda não é adoção corporativa confirmada.
+
+## UX-ICON-03 · Ações CRUD por ícones (em homologação)
+
+A vitrine inclui uma [demonstração visual](https://componentesconsultservices.vercel.app/#icone-crud) do modelo Equilibrado, com estados neutro, edição, perigo, sucesso e desabilitado. [Ler especificação](padroes/UX-ICON-03-acoes-crud-equilibrado.md). Este registro **não caracteriza adoção corporativa**: a homologação da implementação de origem segue pendente. A comparação com a CNC foi usada apenas como referência de interface.
