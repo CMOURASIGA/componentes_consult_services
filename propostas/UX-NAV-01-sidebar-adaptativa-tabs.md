@@ -54,3 +54,13 @@ Recuperar largura útil em tabelas, Kanban, relatórios e formulários. Substitu
 - Abas da tela Ambientes preservadas conforme RT-017; ações em Clientes e Acessos alinhadas ao modelo UX-ICON-03.
 - Evidência de escopo e critérios de aceite: [auditoria técnica 7Service](https://github.com/CMOURASIGA/7Service/blob/develop/docs/UX_7SERVICE_7COMPONENTS_AUDIT_20261112.md).
 - **Situação:** implementação versionada, sem teste visual homologado. Não contabilizar como componente adotado, nem promover mudanças ao 7Commander.
+
+## Homologação do piloto 7Service em 12/11/2026
+
+**Resultado informado pelo responsável:** 5/5 categorias de UX avaliadas (sidebar, navegação, Ambientes, botões/ícones e responsividade), **aceite visual com ressalvas** no commit `2f719bd`. Capturas do ambiente homologado demonstram o menu expandido e compacto, a tela Clientes e as abas de Ambientes.
+
+**Refinamentos posteriores na branch `develop`, ainda sem homologação:** títulos de páginas internas, destaque de rota por limite de segmento, indicação de tooltip no menu compacto e grade horizontal dos três formulários de implantação em telas largas.
+
+**Limites do aceite:** a homologação visual não equivale a cobertura de leitor de tela, teste automatizado de responsividade em todos os breakpoints, adoção geral no 7Components, nem aprovação das novas migrações/licenciamento/provisionamento. O botão flutuante de acessibilidade deve ter a origem identificada antes de qualquer deslocamento, ocultação ou remoção.
+
+**Critério de encerramento:** verificar o build do novo SHA e validar os refinamentos visuais restantes antes da promoção da implementação a padrão corporativo adotado. Nunca inventar métricas de ganho.
