@@ -40,3 +40,7 @@ Labels/mensagens, drawer, modal, feedback toast, formulários/validação e esta
 ## UX-ICON-03 · Ações CRUD por ícones (em homologação)
 
 A vitrine inclui uma [demonstração visual](https://componentesconsultservices.vercel.app/#icone-crud) do modelo Equilibrado, com estados neutro, edição, perigo, sucesso e desabilitado. [Ler especificação](padroes/UX-ICON-03-acoes-crud-equilibrado.md). Este registro **não caracteriza adoção corporativa**: a homologação da implementação de origem segue pendente. A comparação com a CNC foi usada apenas como referência de interface.
+
+## Especificações para desenvolvimento futuro (fora do catálogo de adoção)
+
+- [UX-NAV-01: Sidebar adaptativa + abas contextuais](propostas/UX-NAV-01-sidebar-adaptativa-tabs.md): handoff técnico para piloto no 7Service. **Proposta não implementada/homologada nesta documentação**; a inclusão aqui não eleva a contagem de componentes confirmados nem dispensa medição de ganho e aceite.
