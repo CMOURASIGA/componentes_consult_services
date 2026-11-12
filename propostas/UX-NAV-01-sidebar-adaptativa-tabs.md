@@ -1,6 +1,6 @@
 # UX-NAV-01 | Proposta de evolução: sidebar adaptativa + tabs contextuais
 
-**Situação:** ESPECIFICAÇÃO PARA DESENVOLVIMENTO. **NÃO ADOTADO, NÃO HOMOLOGADO**.
+**Situação:** PILOTO IMPLEMENTADO NO CÓDIGO DO 7SERVICE / DEVELOP. **NÃO ADOTADO, NÃO HOMOLOGADO**.
 **Data:** 12/11/2026.
 **Solicitação:** Consult Services, após aprovação conceitual da mecânica pelo responsável.
 **Referências existentes:** [Sidebar do 7Service em develop](https://github.com/CMOURASIGA/7Service/blob/develop/src/components/layout/sidebar.tsx), [AppShell do 7Service](https://github.com/CMOURASIGA/7Service/blob/develop/src/components/layout/app-shell.tsx), [WorkspaceTabs](https://github.com/CMOURASIGA/7Service/blob/develop/src/components/ui/workspace-tabs.tsx), [RT-017](../padroes/RT-017-tabs-navegacao-contextual.md), [proposta do Commander](https://github.com/CMOURASIGA/7Commander/blob/work/local-kairos-operacional-20261111/docs/UX_NAV_01_SIDEBAR_TABS_FUTURO_20261112.md).
@@ -45,4 +45,12 @@ Recuperar largura útil em tabelas, Kanban, relatórios e formulários. Substitu
 ## Rastreabilidade
 - **Produto piloto pretendido:** 7Service (branch `develop`; produção `main` depende de autorização).
 - **Outro produto interessado:** 7Commander. Sua homologação KAIROS-SKILLS-02 continua independente e prioritária.
-- **Status atual:** especificado, código e homologação desta UX não executados nesta proposta.
+- **Status atual em 12/11/2026:** código do piloto registrado na `develop` do 7Service em `shell-client.tsx`, `sidebar.tsx` e `globals.css`; homologação visual, acessibilidade, testes e métricas ainda pendentes. Não utilizar como evidência de adoção corporativa.
+
+## Registro do piloto 7Service (12/11/2026)
+
+- Sidebar expandida/compacta com reflow no desktop e largura-alvo de 256/72px, sem alterar rotas ou regras de acesso.
+- Preferência de visualização local (nenhum dado contratual ou do usuário armazenado por esse mecanismo).
+- Abas da tela Ambientes preservadas conforme RT-017; ações em Clientes e Acessos alinhadas ao modelo UX-ICON-03.
+- Evidência de escopo e critérios de aceite: [auditoria técnica 7Service](https://github.com/CMOURASIGA/7Service/blob/develop/docs/UX_7SERVICE_7COMPONENTS_AUDIT_20261112.md).
+- **Situação:** implementação versionada, sem teste visual homologado. Não contabilizar como componente adotado, nem promover mudanças ao 7Commander.
