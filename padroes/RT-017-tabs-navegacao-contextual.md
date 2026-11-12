@@ -73,3 +73,7 @@ O catálogo registra o comportamento implementado e suas evidências.
 
 **Regra de adoção:** só promover a padrão corporativo validado após evidência
 de homologação e ganho demonstrado, conforme política 7Components.
+
+## Evolução proposta, não homologada: UX-NAV-01
+
+O padrão já implementado de abas deverá ser **reutilizado** na futura integração com sidebar adaptativa e reflow de conteúdo, em vez de substituído automaticamente. A especificação da evolução está em [UX-NAV-01](../propostas/UX-NAV-01-sidebar-adaptativa-tabs.md). Esta adição é apenas planejamento: não modifica o status de adoção deste RT-017.
