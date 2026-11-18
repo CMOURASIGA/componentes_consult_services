@@ -64,3 +64,43 @@
 .icon-demo-result{min-height:20px;color:#536b80;font-size:12px;margin:15px 0 24px}.icon-standard-notes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.icon-standard-notes>div{border:1px solid #e2eaf0;border-radius:10px;padding:14px;background:#f8fafc}.icon-standard-notes strong{display:block;font-size:12px;color:#17324d}.icon-standard-notes span{display:block;font-size:11px;line-height:1.5;color:#536b80;margin-top:5px}.icon-primary-demo{display:flex;align-items:center;gap:14px;margin-top:20px;flex-wrap:wrap}.icon-primary-demo span,.icon-standard-footer{font-size:12px;color:#536b80}.icon-standard-footer{margin-top:14px}.icon-standard-footer a{color:#003b73;font-weight:700;text-decoration:underline}
 @media(pointer:coarse){.cs-icon-action{width:44px;height:44px;min-width:44px}}@media(max-width:850px){.icon-standard-notes{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:500px){.icon-standard-panel{padding:18px}.icon-standard-notes{grid-template-columns:1fr}.icon-review-status{white-space:normal}}
 @media(prefers-reduced-motion:reduce){.cs-icon-action{transition:none}}
+
+
+/* RT-018 - vitrine, incluindo exemplo visual inspirado no 7Service */
+.tabs-showcase{scroll-margin-top:90px}
+.tabs-showcase-note{border:1px solid #cfdded;border-radius:10px 10px 0 0;background:#edf5fc;padding:16px 20px}
+.tabs-showcase-note strong{font-size:14px;color:#003b73}
+.tabs-showcase-note p{margin:6px 0 0;font-size:12px;color:#536b80;line-height:1.6}
+.tabs-showcase-secondary{margin-top:26px;border-radius:10px 10px 0 0}
+.tabs-service{background:#fff;border:1px solid #cfdded;border-top:0;border-radius:0 0 10px 10px;padding:20px}
+.tabs-showcase-title h3{margin:0;font-size:20px;color:#152f4b}
+.tabs-showcase-title p{margin:4px 0 18px;font-size:13px;color:#536b80}
+.tabs-service-demo{border:0;overflow:visible}
+.tabs-service-demo .cs-tabs__nav{background:transparent;padding:0;gap:3px}
+.tabs-service-demo .cs-tabs__tab{border:1px solid transparent;border-bottom:0;border-radius:6px 6px 0 0;background:transparent;color:#21466e;font-size:13px;padding:12px 16px}
+.tabs-service-demo .cs-tabs__tab[aria-selected=true]{background:white;color:#003b73;border-color:#c6d7e9;box-shadow:inset 0 3px 0 #0063b3;font-weight:700}
+.tabs-service-demo .cs-tabs__panel{border:1px solid #b6cde4;border-radius:7px;margin-top:20px;padding:20px}
+.tabs-service-demo h4{font-size:16px;margin:0 0 7px;color:#17324d}
+.tabs-showcase-helper{font-size:12px;line-height:1.65;color:#536b80;margin:0 0 18px}
+.tabs-showcase-subcard{margin-top:16px;padding:16px;border:1px solid #b6cde4;border-radius:7px;background:#f9fbfe}
+.tabs-showcase-subcard strong{font-size:13px}
+.tabs-showcase-subcard p{font-size:12px;color:#536b80;margin:7px 0 12px}
+.tabs-service-demo .cs-tabs__action--primary{background:#174bea;border-color:#174bea}
+.tabs-showcase-empty{padding:30px 12px;text-align:center;color:#718599;font-size:12px;border:1px dashed #d2dfec;margin-top:15px}
+.tabs-showcase-feedback{font-size:12px;color:#536b80;margin:12px 0 0}
+.tabs-showcase-frame{display:block;width:100%;height:705px;border:1px solid #cfdded;border-top:0;border-radius:0 0 10px 10px;background:#f4f7fa}
+.tabs-showcase-links{display:flex;gap:18px;flex-wrap:wrap;padding:16px 0}
+.tabs-showcase-links a{font-size:12px;font-weight:700;color:#003b73;text-decoration:underline}
+.tabs-showcase-guide{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:8px}
+.tabs-showcase-guide>div{padding:17px;border:1px solid #dce6ef;border-radius:10px;background:white}
+.tabs-showcase-guide strong{display:block;font-size:12px;color:#17324d}
+.tabs-showcase-guide span{display:block;font-size:11px;line-height:1.65;color:#536b80;margin-top:7px}
+.tabs-card-mini{width:100%;border:1px solid #cad9e9;border-radius:8px;background:white;overflow:hidden;padding:9px;text-align:left}
+.tabs-card-mini>div{display:flex;gap:4px;border-bottom:1px solid #dce6ef}
+.tabs-card-mini span{padding:10px 8px;font-size:10px;color:#35577b;white-space:nowrap}
+.tabs-card-mini span:first-child{border:1px solid #dce6ef;border-bottom:0;box-shadow:inset 0 2px 0 #0063b3;font-weight:bold}
+.tabs-card-mini small{display:block;color:#718599;margin:14px 5px}
+.tabs-card-mini i{display:block;background:#e9eff6;height:10px;margin:8px 5px;border-radius:3px}
+.tabs-card-mini i:last-child{width:60%}
+@media(max-width:900px){.tabs-showcase-guide{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.tabs-service{padding:12px}.tabs-service-demo .cs-tabs__panel{padding:14px}.tabs-showcase-frame{height:780px}.tabs-showcase-guide{grid-template-columns:1fr}}
