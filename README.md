@@ -44,3 +44,13 @@ A vitrine inclui uma [demonstração visual](https://componentesconsultservices.
 ## Especificações para desenvolvimento futuro (fora do catálogo de adoção)
 
 - [UX-NAV-01: Sidebar adaptativa + abas contextuais](propostas/UX-NAV-01-sidebar-adaptativa-tabs.md): handoff técnico para piloto no 7Service. **Proposta não implementada/homologada nesta documentação**; a inclusão aqui não eleva a contagem de componentes confirmados nem dispensa medição de ganho e aceite.
+
+## RT-018 · Abas para formulários com múltiplas informações
+
+Padrão complementar ao RT-017, baseado nas referências visuais de 18/11/2026. Inclui componente HTML/CSS/JS reutilizável e demonstração com quatro abas, campos preservados na alternância, navegação acessível e skeleton de carregamento.
+
+- [Especificação e critérios de homologação](padroes/RT-018-abas-formularios.md)
+- [Demonstração interativa de formulário](exemplos/abas-formulario.html)
+- [CSS reutilizável](componentes/consult-tabs.css) e [JavaScript de navegação](componentes/consult-tabs.js)
+
+**Situação:** implementação de referência disponível neste catálogo, ainda não implantada automaticamente nos sistemas operacionais. Validar em homologação antes da adoção.
