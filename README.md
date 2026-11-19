@@ -23,7 +23,7 @@ Este é um **inventário manual inicial** (outubro de 2026), não um crawler ou 
 
 - [RT-001: Whitelabel do cliente](padroes/RT-001-whitelabel.md), com análise do comportamento real, requisitos sugeridos, checklist de homologação e demonstração visual isolada no catálogo.
 
-- [RT-009: Identidade de produto e ícone do sistema](padroes/RT-009.md) — padrão do símbolo **C de circuitos** nas abas web e nos atalhos de smartphone, com separação entre identidade do produto e whitelabel da empresa. Ícone oficial do Commander armazenado em [`assets/product-icons/commander.svg`](assets/product-icons/commander.svg) e disponível na vitrine `#identidade-produtos`. O Access Management Service terá identidade própria, ainda em definição; homologação visual pendente.
+- [RT-009: Identidade de produto e ícones dos sistemas](padroes/RT-009.md) — identidades aprovadas do [Commander](assets/product-icons/commander.svg) e do [Access Management Service](assets/product-icons/access-management-service.svg), com origem versionada por produto e separação do whitelabel da empresa. [Ver vitrine](https://componentesconsultservices.vercel.app/#identidade-produtos).
 
 ## Rotinas transversais RT-002 a RT-010
 
